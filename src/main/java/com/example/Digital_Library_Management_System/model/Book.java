@@ -17,7 +17,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @AllArgsConstructor
@@ -33,6 +35,7 @@ public class Book {
 
     private String name;
 
+    @Getter @Setter
     @ManyToOne
     @JoinColumn
     private Author author;

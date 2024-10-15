@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -27,6 +28,7 @@ public class Author {
 
      private String name;
 
+     @Getter
     @Column(unique = true, nullable = false)
     private String email;
 
