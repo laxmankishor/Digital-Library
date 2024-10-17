@@ -6,6 +6,8 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.example.Digital_Library_Management_System.dto.BookResponse;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -58,6 +60,20 @@ public class Book {
 
     @OneToMany(mappedBy = "book")
     private List<Transaction> transaction;
+
+
+    public BookResponse to(){
+        return BookResponse.builder()
+                .author(this.author)
+                .book_student(this.book_student)
+                .genre(this.genre)
+                .id(this.id)
+                .name(this.name)
+                .price(this.price)
+                .createdOn(this.createdOn)
+                .updatedOn(this.updatedOn)
+                .build();
+    }
 
 
 
