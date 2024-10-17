@@ -14,7 +14,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @AllArgsConstructor
@@ -27,15 +29,18 @@ public class Student {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Getter @Setter
     private String name;
 
+    @Getter @Setter
     @Column(unique = true, nullable = false)
     private String email;
 
+    @Getter @Setter
     @Column(unique = true, nullable = false)
-    private Integer rollNumber;
+    private String rollNumber;
 
-
+    @Getter @Setter
     private Integer age;
 
     @CreationTimestamp
