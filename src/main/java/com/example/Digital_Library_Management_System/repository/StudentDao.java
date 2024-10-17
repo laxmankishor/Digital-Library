@@ -8,5 +8,9 @@ import com.example.Digital_Library_Management_System.model.Student;
 
 @Repository
 public interface StudentDao extends JpaRepository<Student,Integer> {
+
+    Student findByRollNumber(String rollNumber);
+
+    Student findByEmail(String email);
     
 }

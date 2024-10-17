@@ -6,6 +6,9 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.example.Digital_Library_Management_System.dto.SearchStudentResponse;
+import com.example.Digital_Library_Management_System.service.StudentService;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -55,5 +58,20 @@ public class Student {
 
     @OneToMany(mappedBy = "book_student")
     private List<Book> bookList;
+
+
+    public SearchStudentResponse to(){
+        return SearchStudentResponse.builder()
+                    .name(this.name)
+                    .email(this.email)
+                    .id(this.id)
+                    .rollNumber(this.rollNumber)
+                    .age(this.age)
+                    .createdOn(this.createdOn)
+                    .updatedOn(this.updatedOn)
+                    .bookList(this.bookList)
+                    .build();
+
+    }
     
 }
