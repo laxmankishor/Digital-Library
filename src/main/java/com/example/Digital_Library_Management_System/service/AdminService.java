@@ -18,5 +18,9 @@ public class AdminService {
         
     }
 
+    public Admin findAdmin(Integer adminId) {
+        return adminDao.findById(adminId).orElse(null);
+    }
+
     
 }

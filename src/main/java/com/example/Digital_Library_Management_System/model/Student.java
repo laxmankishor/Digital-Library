@@ -7,7 +7,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.example.Digital_Library_Management_System.dto.SearchStudentResponse;
-import com.example.Digital_Library_Management_System.service.StudentService;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,6 +24,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter @Setter
 public class Student {
 
 
@@ -32,18 +32,14 @@ public class Student {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Getter @Setter
     private String name;
 
-    @Getter @Setter
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Getter @Setter
     @Column(unique = true, nullable = false)
     private String rollNumber;
 
-    @Getter @Setter
     private Integer age;
 
     @CreationTimestamp

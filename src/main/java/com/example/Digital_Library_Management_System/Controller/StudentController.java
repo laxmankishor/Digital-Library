@@ -43,7 +43,7 @@ public class StudentController {
                             searchRequest.getSearchValue());
                             
         
-            return ResponseEntity.status(HttpStatus.CREATED)
+            return ResponseEntity.status(HttpStatus.OK)
                                 .body(student.to());
             
         }
