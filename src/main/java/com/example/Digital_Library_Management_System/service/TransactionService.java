@@ -87,7 +87,7 @@ public class TransactionService {
         }
 
         // 3. Validating if the student can be issued the book/ if he has available limit to issue book
-        if(student.getBookList().size() > maxBooksAllowed){
+        if(student.getBookList().size() >= maxBooksAllowed){
             throw new Exception("Issue limit reached for this student");
         }
 
@@ -150,6 +150,10 @@ public class TransactionService {
        // 2. Get the corresponding issue txn
        Transaction issuanceTransaction = transactionDao.findBYStudentAndBookAndTransactionTypeOrderByIdAsc(book.getId(), student.getId(), TransactionType.ISSUE);
 
+       // Validating if an issue txn exists
+       if(issuanceTransaction == null){
+        throw new Exception("This book can't be returned as it wasn't issued to the student");
+       }
        //3. Update the return txn in txn table
        Transaction transaction = null;
 
@@ -219,7 +223,9 @@ public class TransactionService {
         }
     }
 
-       private Integer calculateFine(Date issuanceDateTime) {
+
+    //TODO : Test this fine function in postman
+    private Integer calculateFine(Date issuanceDateTime) {
         long issuanceTimeInMillis = issuanceDateTime.getTime();
         long currentTime = System.currentTimeMillis();
 

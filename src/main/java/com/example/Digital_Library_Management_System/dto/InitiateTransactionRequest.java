@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter @Setter
@@ -25,7 +24,7 @@ public class InitiateTransactionRequest {
     private String studentRollNumber;
     @NotNull
     private Integer bookId;
-    @NotBlank
+    @NotNull
     private TransactionType transactionType;
     
 }
