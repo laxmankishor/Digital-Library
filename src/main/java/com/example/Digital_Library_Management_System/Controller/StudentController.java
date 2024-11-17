@@ -56,6 +56,8 @@ public class StudentController {
 
     }
 
+    // TODO- Write an API for viewing student's self profile using Security Context
+
 
 
 }

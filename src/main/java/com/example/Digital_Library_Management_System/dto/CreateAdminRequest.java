@@ -21,6 +21,12 @@ public class CreateAdminRequest {
     @NotBlank
     private String email;
 
+    @NotBlank
+    private String username;
+
+    @NotBlank
+    private String password;
+
 
 
     public Admin to(){

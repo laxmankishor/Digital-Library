@@ -1,0 +1,20 @@
+Important points:
+
+The @Bean definition of DaoAuthenticationProvider in the security configuration of a Spring Boot application is a common pattern to configure authentication. Here’s a detailed explanation of its purpose:
+Purpose of DaoAuthenticationProvider
+
+DaoAuthenticationProvider is a Spring Security component that authenticates users based on data stored in a database or any other persistent storage. The DAO in DaoAuthenticationProvider stands for Data Access Object.
+
+What Happens During Authentication?
+
+	1.	Login Request:
+	•	A user submits a login form with their username and password.
+	2.	Authentication Flow:
+	•	The AuthenticationManager delegates the authentication process to DaoAuthenticationProvider.
+	3.	Fetching User Details:
+	•	DaoAuthenticationProvider calls the UserDetailsService to retrieve user information (username, password, roles).
+	4.	Password Verification:
+	•	The provided password is encoded using the PasswordEncoder and compared with the stored (hashed) password.
+	5.	Success or Failure:
+	•	If the username exists and the password matches, the user is authenticated.
+	•	Otherwise, an authentication exception is thrown.

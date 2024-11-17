@@ -24,10 +24,16 @@ public class AdminController {
     public ResponseEntity<String> createAdmin(@RequestBody @Valid CreateAdminRequest createAdminRequest) {
 
 
-        adminService.createAdmin(createAdminRequest.to());
-
-        return  ResponseEntity.status(HttpStatus.CREATED)
-                .body("Admin got created Successfully!");
+        try {
+            adminService.createAdmin(createAdminRequest.to());
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body("Admin got created successfully");
+        } catch (Exception e) {
+            return ResponseEntity
+            .status(HttpStatus.INTERNAL_SERVER_ERROR)
+            .body(e.getMessage());
+        }
 
     }
     
