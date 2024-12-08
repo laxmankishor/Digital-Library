@@ -43,7 +43,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         auth -> auth
                                 .requestMatchers("/admin/create").hasAuthority(Constants.CREATE_ADMIN_AUTHORITY)
-                                .requestMatchers("/book/create").hasAuthority(Constants.CREATE_BOOK_AUTHORITY)
+                                .requestMatchers("/book/save").hasAuthority(Constants.CREATE_BOOK_AUTHORITY)
                                 .requestMatchers("/book/search").hasAuthority(Constants.READ_BOOK_AUTHORITY)
                                 .requestMatchers("/book/delete").hasAuthority(Constants.DELETE_BOOK_AUTHORITY)
                                 .requestMatchers("/student/find").hasAuthority(Constants.STUDENT_INFO_AUTHORITY)

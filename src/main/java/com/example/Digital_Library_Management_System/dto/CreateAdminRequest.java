@@ -1,6 +1,7 @@
 package com.example.Digital_Library_Management_System.dto;
 
 import com.example.Digital_Library_Management_System.model.Admin;
+import com.example.Digital_Library_Management_System.model.User;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -33,6 +34,10 @@ public class CreateAdminRequest {
         return Admin.builder()
                 .name(this.name)
                 .email(this.email)
+                .user(User.builder()
+                    .userName(this.username)
+                    .password(this.password)
+                .build())
                 .build();
     }
 

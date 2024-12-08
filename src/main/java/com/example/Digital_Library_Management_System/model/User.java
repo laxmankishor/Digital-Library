@@ -1,6 +1,16 @@
 package com.example.Digital_Library_Management_System.model;
 
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.boot.autoconfigure.web.WebProperties.Resources.Chain.Strategy;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.example.Digital_Library_Management_System.Constants.Constants;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,9 +27,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Getter
 @Setter
-public class User {
+@Getter
+public class User implements UserDetails , Serializable {
 
    
     @Id
@@ -35,6 +45,21 @@ public class User {
 
     @OneToOne(mappedBy = "user")
     private Student student;
+
+
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+         return Arrays.stream(this.authorities.split(Constants.DELIMITER))
+                .map(SimpleGrantedAuthority::new)
+                 .toList();
+    }
+
+    @Override
+    public String getUsername() {
+       return this.userName;
+    }
 
 
 
